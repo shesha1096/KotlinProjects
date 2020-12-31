@@ -98,7 +98,6 @@ class LocationService : Service()
         LocationServices.getFusedLocationProviderClient(this)
             .requestLocationUpdates(locationRequest,locationCallback,Looper.getMainLooper())
 
-        startForeground(180,builder.build())
     }
 
     private fun stopLocationService()
