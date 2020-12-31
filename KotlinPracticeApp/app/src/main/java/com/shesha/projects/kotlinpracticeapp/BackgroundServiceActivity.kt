@@ -1,4 +1,4 @@
-package com.shesha.projects.foregroundservicesapp
+package com.shesha.projects.kotlinpracticeapp
 
 import android.app.ActivityManager
 import android.content.Context
@@ -10,12 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.core.app.ActivityCompat
+import com.shesha.projects.kotlinpracticeapp.services.LocationService
 
-class MainActivity : AppCompatActivity() {
+class BackgroundServiceActivity : AppCompatActivity() {
     private final val requestcode : Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_background_service)
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION)!=
             PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
         {
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         stopTracking.setOnClickListener {
             stopLocationService()
         }
+
     }
 
     private fun isLocationServiceRunning() : Boolean{

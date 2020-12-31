@@ -1,4 +1,4 @@
-package com.shesha.projects.locationtrackingapp
+package com.shesha.projects.kotlinpracticeapp.services
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -8,46 +8,54 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Build
-import android.os.Bundle
 import android.os.IBinder
 import android.os.Looper
 import android.util.Log
 import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.app.NotificationCompat
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
+import com.shesha.projects.kotlinpracticeapp.R
+import java.util.*
 
-class LocationService : Service()
+class LocationForegroundService : Service()
 {
-
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0
+    var streetAddress : String = ""
+    lateinit var builder : NotificationCompat.Builder
+    lateinit var notificationManager : NotificationManager
     var locationCallback: LocationCallback? = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
             super.onLocationResult(p0)
             if (p0 != null && p0.lastLocation != null)
             {
-                var latitude : Double = p0.lastLocation.latitude
-                var longitude : Double = p0.lastLocation.longitude
+                latitude = p0.lastLocation.latitude
+                longitude = p0.lastLocation.longitude
+                var geocoder : Geocoder
+                var addresses : List<Address>
+                geocoder = Geocoder(this@LocationForegroundService, Locale.getDefault())
+                addresses = geocoder.getFromLocation(latitude,longitude,1)
+                streetAddress = addresses.get(0).getAddressLine(0)
+                builder.setContentText("You're currently at: $streetAddress")
+                notificationManager.notify(178,builder.build())
                 Log.d("LATITUDE",latitude.toString())
                 Log.d("LONGITUDE",longitude.toString())
+                Log.d("LOCATION_ADDR",streetAddress)
             }
         }
 
 
-}
+    }
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 
     private fun startLocationService(){
-        var channelId : String = "location_notification_channel"
-        var notificationManager : NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        var channelId : String = "location_notification_channel_1"
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         var resultIntent : Intent = Intent()
         var pendingIntent : PendingIntent = PendingIntent.getActivity(
             applicationContext,
@@ -55,11 +63,11 @@ class LocationService : Service()
             resultIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
-        var builder = NotificationCompat.Builder(applicationContext,channelId)
+        builder = NotificationCompat.Builder(applicationContext,channelId)
         builder.setSmallIcon(R.mipmap.ic_launcher)
         builder.setContentTitle("Tracking Location")
         builder.setDefaults(NotificationCompat.DEFAULT_ALL)
-        builder.setContentText("Running")
+        builder.setContentText("You're currently at: $streetAddress")
         builder.setContentIntent(pendingIntent)
         builder.setAutoCancel(false)
         builder.setPriority(NotificationCompat.PRIORITY_MAX)
@@ -69,14 +77,14 @@ class LocationService : Service()
             if (notificationManager != null
                 && notificationManager.getNotificationChannel(channelId) == null)
             {
-                var notificationChannel = NotificationChannel(channelId,"Location Service",NotificationManager.IMPORTANCE_HIGH)
-                notificationChannel.description = "This channel is being used by location services"
+                var notificationChannel = NotificationChannel(channelId,"Location Service",
+                    NotificationManager.IMPORTANCE_HIGH)
+                notificationChannel.description = "You're currently at: $streetAddress"
                 notificationManager.createNotificationChannel(notificationChannel)
             }
         }
         var locationRequest  = LocationRequest()
-        locationRequest.setInterval(60000)
-        locationRequest.setFastestInterval(2000)
+        locationRequest.setInterval(60*1000)
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
 
         if (ActivityCompat.checkSelfPermission(
@@ -97,7 +105,9 @@ class LocationService : Service()
             return
         }
         LocationServices.getFusedLocationProviderClient(this)
-            .requestLocationUpdates(locationRequest,locationCallback,Looper.getMainLooper())
+            .requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
+
+        startForeground(178,builder.build())
 
     }
 

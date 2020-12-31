@@ -1,21 +1,20 @@
-package com.shesha.projects.foregroundservicesapp
+package com.shesha.projects.kotlinpracticeapp
 
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.core.app.ActivityCompat
+import com.shesha.projects.kotlinpracticeapp.services.LocationForegroundService
 
-class MainActivity : AppCompatActivity() {
+class ForegroundServiceActivity : AppCompatActivity() {
     private final val requestcode : Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_foreground_service)
         if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION)!=
             PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
         {
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         {
             for (activityManager in activityManager.getRunningServices(Int.MAX_VALUE))
             {
-                if (LocationService::class.java.name.equals(activityManager.service.className))
+                if (LocationForegroundService::class.java.name.equals(activityManager.service.className))
                 {
                     if (activityManager.foreground)
                     {
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     private fun startLocationService(){
         if (!isLocationServiceRunning())
         {
-            var intent : Intent = Intent(applicationContext,LocationService::class.java)
+            var intent : Intent = Intent(applicationContext,LocationForegroundService::class.java)
             intent.setAction("startLocationService")
             startService(intent)
         }
@@ -64,18 +63,10 @@ class MainActivity : AppCompatActivity() {
     private fun stopLocationService(){
         if (isLocationServiceRunning())
         {
-            var intent : Intent = Intent(applicationContext,LocationService::class.java)
+            var intent : Intent = Intent(applicationContext,LocationForegroundService::class.java)
             intent.setAction("stopLocationService")
             startService(intent)
         }
     }
 
-    private val locationListener: LocationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-
-        }
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-        override fun onProviderEnabled(provider: String) {}
-        override fun onProviderDisabled(provider: String) {}
-    }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/background_service"
+        android:title="Background Services Demo"
+        />
+
+    <item
+        android:id="@+id/foreground_service"
+        android:title="Foreground Services Demo"
+        />
+
+    <item
+        android:id="@+id/work_manager"
+        android:title="Work Manager Demo"
+        />
+
+</menu>

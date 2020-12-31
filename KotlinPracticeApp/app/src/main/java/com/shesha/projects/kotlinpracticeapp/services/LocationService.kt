@@ -1,4 +1,4 @@
-package com.shesha.projects.locationtrackingapp
+package com.shesha.projects.kotlinpracticeapp.services
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -23,6 +23,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.shesha.projects.kotlinpracticeapp.R
 
 class LocationService : Service()
 {
@@ -75,8 +76,7 @@ class LocationService : Service()
             }
         }
         var locationRequest  = LocationRequest()
-        locationRequest.setInterval(60000)
-        locationRequest.setFastestInterval(2000)
+        locationRequest.setInterval(60*1000)
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
 
         if (ActivityCompat.checkSelfPermission(
