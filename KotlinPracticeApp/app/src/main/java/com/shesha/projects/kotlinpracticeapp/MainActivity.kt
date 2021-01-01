@@ -28,10 +28,17 @@ class MainActivity : AppCompatActivity() {
                 R.id.background_service -> startBackgroundActivity()
                 R.id.foreground_service -> startForegroundActivity()
                 R.id.work_manager -> startWorkManagerActivity()
+                R.id.work_manager_constraints -> startConstraintsWorkManagerActivity()
             }
             true
         }
 
+    }
+
+    private fun startConstraintsWorkManagerActivity()
+    {
+        var intent : Intent = Intent(this@MainActivity,WorkManagerConstraintsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startWorkManagerActivity()

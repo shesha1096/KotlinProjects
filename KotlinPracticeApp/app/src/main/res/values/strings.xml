@@ -2,4 +2,7 @@
     <string name="app_name">KotlinPracticeApp</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="geopoints">geopoints</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
 </resources>

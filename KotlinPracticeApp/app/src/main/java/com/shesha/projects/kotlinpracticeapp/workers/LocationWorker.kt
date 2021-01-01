@@ -1,6 +1,7 @@
 package com.shesha.projects.kotlinpracticeapp.workers
 
 import android.Manifest
+import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,6 +14,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.android.gms.location.LocationCallback
@@ -20,18 +22,29 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.shesha.projects.kotlinpracticeapp.R
+import com.shesha.projects.kotlinpracticeapp.services.LocationForegroundService
+import com.shesha.projects.kotlinpracticeapp.services.LocationService
 import java.lang.Exception
 
 class LocationWorker(context : Context, params: WorkerParameters) : Worker(context,params)
 {
     var context : Context = context
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0
     var locationCallback: LocationCallback? = object : LocationCallback() {
         override fun onLocationResult(p0: LocationResult?) {
             super.onLocationResult(p0)
             if (p0 != null && p0.lastLocation != null)
             {
-                var latitude : Double = p0.lastLocation.latitude
-                var longitude : Double = p0.lastLocation.longitude
+                latitude = p0.lastLocation.latitude
+                longitude = p0.lastLocation.longitude
+                val sharedPref = context.getSharedPreferences(context.getString(R.string.geopoints), Context.MODE_PRIVATE) ?: return
+                with (sharedPref.edit())
+                {
+                    putString(context.getString(R.string.latitude),latitude.toString())
+                    putString(context.getString(R.string.longitude),longitude.toString())
+                    apply()
+                }
                 Log.d("LATITUDE",latitude.toString())
                 Log.d("LONGITUDE",longitude.toString())
             }
@@ -39,6 +52,7 @@ class LocationWorker(context : Context, params: WorkerParameters) : Worker(conte
 
 
     }
+
 
     override fun doWork(): Result {
         try {
@@ -72,7 +86,6 @@ class LocationWorker(context : Context, params: WorkerParameters) : Worker(conte
                 }
             }
             var locationRequest  = LocationRequest()
-            locationRequest.setInterval(60*1000)
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
 
 
@@ -96,6 +109,8 @@ class LocationWorker(context : Context, params: WorkerParameters) : Worker(conte
             LocationServices.getFusedLocationProviderClient(context)
                 .requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
 
+            var outputData : Data = Data.Builder().putString("Latitude",latitude.toString()).build()
+            //Log.d("LATITUDE",outputData.toString())
             return Result.success()
 
         }

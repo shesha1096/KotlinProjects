@@ -37,6 +37,13 @@ class LocationService : Service()
                 var longitude : Double = p0.lastLocation.longitude
                 Log.d("LATITUDE",latitude.toString())
                 Log.d("LONGITUDE",longitude.toString())
+                val sharedPref = getSharedPreferences(getString(R.string.geopoints), Context.MODE_PRIVATE) ?: return
+                with (sharedPref.edit())
+                {
+                    putString(getString(com.shesha.projects.kotlinpracticeapp.R.string.latitude),latitude.toString())
+                    putString(getString(com.shesha.projects.kotlinpracticeapp.R.string.longitude),longitude.toString())
+                    apply()
+                }
             }
         }
 
