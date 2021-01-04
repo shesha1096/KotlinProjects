@@ -29,10 +29,17 @@ class MainActivity : AppCompatActivity() {
                 R.id.foreground_service -> startForegroundActivity()
                 R.id.work_manager -> startWorkManagerActivity()
                 R.id.work_manager_constraints -> startConstraintsWorkManagerActivity()
+                R.id.broadcast_receiver_demo -> startBroadcastReceiverDemo()
             }
             true
         }
 
+    }
+
+    private fun startBroadcastReceiverDemo()
+    {
+        var intent : Intent = Intent(this@MainActivity,BroadcastReceiverActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startConstraintsWorkManagerActivity()

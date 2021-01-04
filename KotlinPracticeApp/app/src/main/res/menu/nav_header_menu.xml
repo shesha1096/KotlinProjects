@@ -20,4 +20,9 @@
         android:title="Work Manager Constraints Demo"
         />
 
+    <item
+        android:id="@+id/broadcast_receiver_demo"
+        android:title="Broadcast Receiver Demo"
+        />
+
 </menu>

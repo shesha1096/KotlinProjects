@@ -15,12 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinPracticeApp">
+        <receiver
+            android:name=".OperationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+
+
+        <activity android:name=".OperationsActivity" />
+        <activity android:name=".BroadcastReceiverActivity" />
         <activity android:name=".WorkManagerConstraintsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
-
         </activity>
         <activity android:name=".WorkManagerLocationActivity" />
         <activity android:name=".ForegroundServiceActivity" />
