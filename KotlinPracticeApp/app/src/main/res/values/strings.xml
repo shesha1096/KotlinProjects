@@ -5,4 +5,6 @@
     <string name="geopoints">geopoints</string>
     <string name="latitude">latitude</string>
     <string name="longitude">longitude</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

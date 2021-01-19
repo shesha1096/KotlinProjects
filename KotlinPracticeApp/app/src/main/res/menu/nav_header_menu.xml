@@ -25,4 +25,14 @@
         android:title="Broadcast Receiver Demo"
         />
 
+    <item
+        android:id="@+id/check_internet_connection"
+        android:title="Check Internet Connection"
+        />
+
+    <item
+        android:id="@+id/navigation_example"
+        android:title="Navigation Component Example"
+        />
+
 </menu>
