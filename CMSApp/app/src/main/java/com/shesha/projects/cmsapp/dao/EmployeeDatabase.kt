@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.shesha.projects.cmsapp.model.Employee
+import com.shesha.projects.cmsapp.model.Project
 
 
 @Database(
-        entities = [Employee::class],
+        entities = [Employee::class,Project::class],
         version = 1
 )
 abstract class EmployeeDatabase : RoomDatabase(){
     abstract fun getEmployeeDao() : EmployeeDao
+
+    abstract fun getProjectDao() : ProjectDao
 
     companion object
     {
