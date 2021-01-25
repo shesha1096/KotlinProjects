@@ -2,21 +2,20 @@ package com.shesha.projects.cmsapp.dao
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.shesha.projects.cmsapp.model.Employee
+import kotlinx.coroutines.flow.Flow
 
-class EmployeeDao {
-    private val employeeList = arrayListOf<Employee>()
-    private val employees = MutableLiveData<List<Employee>>()
+@Dao
+interface EmployeeDao {
 
-    init {
-        employees.value = employeeList
-    }
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun addEmployee(employee : Employee)
 
-    fun addEmployee(employee : Employee)
-    {
-        employeeList.add(employee)
-        employees.value = employeeList
-    }
+    @Query("SELECT * FROM Employee")
+    fun getEmployees() : Flow<List<Employee>>
 
-    fun getEmployees () = employees as LiveData<List<Employee>>
 }

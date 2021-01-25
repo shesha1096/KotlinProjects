@@ -1,16 +1,20 @@
 package com.shesha.projects.cmsapp.repository
 
+import androidx.annotation.WorkerThread
 import com.shesha.projects.cmsapp.dao.EmployeeDao
 import com.shesha.projects.cmsapp.model.Employee
+import kotlinx.coroutines.flow.Flow
 
 class EmployeeRepository private constructor(private val employeeDao : EmployeeDao){
-
-    fun addEmployee(employee : Employee)
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun addEmployee(employee : Employee)
     {
         employeeDao.addEmployee(employee)
     }
 
-    fun getEmployees() = employeeDao.getEmployees()
+
+    val allEmployees : Flow<List<Employee>> = employeeDao.getEmployees()
 
     companion object
     {

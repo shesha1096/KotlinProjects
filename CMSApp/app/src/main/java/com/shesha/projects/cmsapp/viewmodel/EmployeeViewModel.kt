@@ -3,22 +3,26 @@ package com.shesha.projects.cmsapp.viewmodel
 import android.content.Context
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.shesha.projects.cmsapp.dao.EmployeeDatabase
 import com.shesha.projects.cmsapp.model.Employee
 import com.shesha.projects.cmsapp.repository.EmployeeRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class EmployeeViewModel(private val context : Context) : ViewModel()
 {
-    var employeeRepository : EmployeeRepository = EmployeeRepository.getInstance(EmployeeDatabase.getInstance().employeeDao)
+    var employeeRepository : EmployeeRepository = EmployeeRepository.getInstance(EmployeeDatabase.invoke(context).getEmployeeDao())
     var employeeFirstName : String ?= null
     var employeeLastName : String ?= null
     var employeeDepartment : String ?= null
-    var idCounter : Int = 1
 
-    fun getEmployees() = employeeRepository.getEmployees()
+    val allEmployees : LiveData<List<Employee>> = employeeRepository.allEmployees.asLiveData()
 
-    fun addEmployee(employee : Employee)
+    suspend fun addEmployee(employee : Employee)
     {
         employeeRepository.addEmployee(employee)
     }
@@ -31,9 +35,17 @@ class EmployeeViewModel(private val context : Context) : ViewModel()
         }
         else
         {
-            addEmployee(Employee(idCounter,employeeFirstName.toString(),employeeLastName.toString(),employeeDepartment.toString()))
-            idCounter += 1
+
+            runBlocking {
+                withContext(Dispatchers.IO)
+                {
+                    addEmployee(Employee(1,employeeFirstName.toString(),employeeLastName.toString(),employeeDepartment.toString()))
+                }
+            }
+
         }
     }
+
+
 
 }
