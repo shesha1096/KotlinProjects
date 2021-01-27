@@ -11,6 +11,7 @@ import com.shesha.projects.cmsapp.dao.EmployeeDatabase
 import com.shesha.projects.cmsapp.model.Employee
 import com.shesha.projects.cmsapp.repository.EmployeeRepository
 import com.shesha.projects.cmsapp.ui.ProjectListActivity
+import com.shesha.projects.cmsapp.ui.RetrofitExampleActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -60,6 +61,12 @@ class EmployeeViewModel(private val context : Context) : ViewModel()
     fun onProjectListClicked(view: View)
     {
         var intent : Intent = Intent(context,ProjectListActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun onApiCallsClicked(view : View)
+    {
+        var intent : Intent = Intent(context,RetrofitExampleActivity::class.java)
         context.startActivity(intent)
     }
 
