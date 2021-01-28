@@ -10,6 +10,7 @@ import androidx.lifecycle.asLiveData
 import com.shesha.projects.cmsapp.dao.EmployeeDatabase
 import com.shesha.projects.cmsapp.model.Employee
 import com.shesha.projects.cmsapp.repository.EmployeeRepository
+import com.shesha.projects.cmsapp.ui.PagingActivity
 import com.shesha.projects.cmsapp.ui.ProjectListActivity
 import com.shesha.projects.cmsapp.ui.RetrofitExampleActivity
 import kotlinx.coroutines.Dispatchers
@@ -67,6 +68,12 @@ class EmployeeViewModel(private val context : Context) : ViewModel()
     fun onApiCallsClicked(view : View)
     {
         var intent : Intent = Intent(context,RetrofitExampleActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    fun onPagingExampleClicked(view: View)
+    {
+        var intent : Intent = Intent(context,PagingActivity::class.java)
         context.startActivity(intent)
     }
 

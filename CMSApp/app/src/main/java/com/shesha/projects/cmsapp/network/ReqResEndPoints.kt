@@ -18,4 +18,7 @@ interface ReqResEndPoints {
 
     @POST("/api/users")
     suspend fun addUser(@Body requestBody : RequestBody) : Response<UserResponse>
+
+    @GET("/api/users")
+    suspend fun getAllUsers(@Query("page") page : Int = 1) : Response<ReqResModel>
 }

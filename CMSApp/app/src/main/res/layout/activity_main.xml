@@ -121,11 +121,26 @@
             android:id="@+id/apiCallsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get All Users"
             android:onClick="@{employeeViewModel::onApiCallsClicked}"
+            android:text="Get All Users"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/projectListBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/projectListBtn"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paging Example"
+            android:onClick="@{employeeViewModel.onPagingExampleClicked}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.658"
+            app:layout_constraintStart_toEndOf="@+id/apiCallsBtn"
+            app:layout_constraintTop_toBottomOf="@+id/projectListBtn"
+            app:layout_constraintVertical_bias="0.2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

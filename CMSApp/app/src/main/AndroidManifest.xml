@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shesha.projects.cmsapp">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CMSApp">
-        <activity android:name=".ui.RetrofitExampleActivity"></activity>
+        <activity android:name=".ui.PagingActivity"></activity>
+        <activity android:name=".ui.RetrofitExampleActivity" />
         <activity android:name=".ui.ProjectListActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
