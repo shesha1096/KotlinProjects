@@ -13,6 +13,7 @@ import com.shesha.projects.cmsapp.repository.EmployeeRepository
 import com.shesha.projects.cmsapp.ui.PagingActivity
 import com.shesha.projects.cmsapp.ui.ProjectListActivity
 import com.shesha.projects.cmsapp.ui.RetrofitExampleActivity
+import com.shesha.projects.cmsapp.ui.TravelerActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -73,7 +74,9 @@ class EmployeeViewModel(private val context : Context) : ViewModel()
 
     fun onPagingExampleClicked(view: View)
     {
-        var intent : Intent = Intent(context,PagingActivity::class.java)
+       // var intent : Intent = Intent(context,PagingActivity::class.java)
+        //context.startActivity(intent)
+        var intent : Intent = Intent(context,TravelerActivity::class.java)
         context.startActivity(intent)
     }
 

@@ -6,16 +6,20 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.shesha.projects.cmsapp.model.Employee
 import com.shesha.projects.cmsapp.model.Project
+import com.shesha.projects.cmsapp.model.Traveller
+import com.shesha.projects.cmsapp.model.TravellerDatabaseInstance
 
 
 @Database(
-        entities = [Employee::class,Project::class],
+        entities = [Employee::class,Project::class,TravellerDatabaseInstance::class],
         version = 1
 )
 abstract class EmployeeDatabase : RoomDatabase(){
     abstract fun getEmployeeDao() : EmployeeDao
 
     abstract fun getProjectDao() : ProjectDao
+
+    abstract fun getTravelerDao() : TravelerDao
 
     companion object
     {
