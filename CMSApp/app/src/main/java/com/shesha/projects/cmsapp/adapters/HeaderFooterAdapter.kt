@@ -4,7 +4,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,10 +19,12 @@ class HeaderFooterAdapter() : LoadStateAdapter<HeaderFooterAdapter.LoadStateView
         Log.d("LOADING","Loading")
         if (loadState is LoadState.Loading) {
             //show progress view
-            holder.progressBar.visibility = View.VISIBLE
+            holder.linearLayout.visibility = View.VISIBLE
+            holder.relativeLayout.visibility = View.GONE
         } else //hide the view
         {
-            holder.progressBar.visibility = View.GONE
+            holder.linearLayout.visibility = View.GONE
+            holder.relativeLayout.visibility = View.VISIBLE
 
         }
 
@@ -35,6 +39,7 @@ class HeaderFooterAdapter() : LoadStateAdapter<HeaderFooterAdapter.LoadStateView
 
     class LoadStateViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
-        var progressBar : ProgressBar = view.findViewById(R.id.user_progress_bar)
+        var linearLayout : LinearLayout = view.findViewById(R.id.user_progress_bar)
+        var relativeLayout : RelativeLayout = view.findViewById(R.id.card_traveler)
     }
 }

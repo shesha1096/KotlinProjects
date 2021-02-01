@@ -21,15 +21,6 @@
             android:id="@+id/user_first_name"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/user_first_name"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Trips"
-            android:id="@+id/user_trips"
-            />
 
     </RelativeLayout>
 

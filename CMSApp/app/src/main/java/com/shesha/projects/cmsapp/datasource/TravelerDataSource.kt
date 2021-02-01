@@ -26,10 +26,9 @@ class TravelerDataSource(context: Context) : PagingSource<Int, Traveller.Data>()
         try {
             val currentLoadingPageKey = params.key ?: 1
             var request = TravelerServiceBuilder.buildService(TravelerEndPoints::class.java)
-            val response = request.getUsers(1,10)
+            val response = request.getUsers(currentLoadingPageKey,10)
             val responseData = mutableListOf<Traveller.Data>()
             val data = response.body()?.data ?: emptyList()
-            Log.d("RESPONSE",data.toString())
             responseData.addAll(data)
             for (i in data)
             {
@@ -39,7 +38,6 @@ class TravelerDataSource(context: Context) : PagingSource<Int, Traveller.Data>()
                 EmployeeDatabase.invoke(context).getTravelerDao())
             travelerRepository.addAllTravelers(travelerList)
             val prevKey = if (currentLoadingPageKey == 1) null else currentLoadingPageKey - 1
-
             return LoadResult.Page(
                 data = responseData,
                 prevKey = prevKey,
