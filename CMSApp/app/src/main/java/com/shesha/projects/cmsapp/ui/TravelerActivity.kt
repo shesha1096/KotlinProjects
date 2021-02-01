@@ -11,6 +11,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shesha.projects.cmsapp.R
+import com.shesha.projects.cmsapp.adapters.HeaderFooterAdapter
 import com.shesha.projects.cmsapp.adapters.OfflineTravelersAdapter
 import com.shesha.projects.cmsapp.adapters.PagingRecyclerAdapter
 import com.shesha.projects.cmsapp.adapters.TravelerRecyclerAdapter
@@ -55,14 +56,12 @@ class TravelerActivity : AppCompatActivity() {
         binding.usersRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@TravelerActivity)
             adapter = travelerRecyclerAdapter
-            lifecycleScope.launch {
                 lifecycleScope.launch {
                     travelerViewModel.listData?.collect {
                         travelerRecyclerAdapter.submitData(it)
                     }
                 }
-
-            }
+            adapter = travelerRecyclerAdapter.withLoadStateFooter(HeaderFooterAdapter())
             travelerRecyclerAdapter.addLoadStateListener {
                 if (it.refresh == LoadState.Loading) {
                     // show progress view
@@ -73,24 +72,9 @@ class TravelerActivity : AppCompatActivity() {
 
             }
 
-            binding.usersRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    if (dy > 0)
-                    {
-                        binding.userProgressBar.visibility = View.VISIBLE
-                        Handler().postDelayed(Runnable {
-                            binding.userProgressBar.visibility = View.GONE
-                        },1000)
 
-                    }
 
-                    super.onScrolled(recyclerView, dx, dy)
-                }
 
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                }
-            })
 
 
 
