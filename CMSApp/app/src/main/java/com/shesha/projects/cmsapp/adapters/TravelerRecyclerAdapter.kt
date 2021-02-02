@@ -18,8 +18,10 @@ import com.shesha.projects.cmsapp.utils.Constant
 class TravelerRecyclerAdapter(context : Context) :  PagingDataAdapter<Traveller.Data, RecyclerView.ViewHolder>(DataDifferentiator)  {
 
     private lateinit var context : Context
+    private lateinit var imageUrlList : List<String>
     init {
         this.context = context
+        this.imageUrlList = Constant.IMAGE_URL
     }
 
 
@@ -66,7 +68,8 @@ class TravelerRecyclerAdapter(context : Context) :  PagingDataAdapter<Traveller.
         {
             var travelerImageViewHolder : TravelerImageViewHolder = holder as TravelerImageViewHolder
             travelerImageViewHolder.userFirstName.text = getItem(position)?.name ?: "Name"
-            Glide.with(context).load(Constant.URL).into(holder.imageView)
+            Glide.with(context).load(imageUrlList[position%5]).into(holder.imageView)
+            //Glide.with(context).load(Constant.URL).into(holder.imageView)
         }
 
     }

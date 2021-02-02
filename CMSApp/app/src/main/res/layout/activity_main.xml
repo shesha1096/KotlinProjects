@@ -142,5 +142,31 @@
             app:layout_constraintStart_toEndOf="@+id/apiCallsBtn"
             app:layout_constraintTop_toBottomOf="@+id/projectListBtn"
             app:layout_constraintVertical_bias="0.2" />
+
+        <Button
+            android:id="@+id/coroutine_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coroutine Example"
+            android:onClick="@{employeeViewModel::onCoroutinesClicked}"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.116"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.761" />
+
+        <Button
+            android:id="@+id/pokemon_get_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pokemons!"
+            android:onClick="@{employeeViewModel::onGetPokemonsClicked}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.551"
+            app:layout_constraintStart_toEndOf="@+id/coroutine_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.301" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

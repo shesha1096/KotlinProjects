@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CMSApp">
-        <activity android:name=".ui.TravelerActivity"></activity>
+        <activity android:name=".ui.PokemonActivity"></activity>
+        <activity android:name=".ui.CoroutinesActivity" />
+        <activity android:name=".ui.TravelerActivity" />
         <activity android:name=".ui.PagingActivity" />
         <activity android:name=".ui.RetrofitExampleActivity" />
         <activity android:name=".ui.ProjectListActivity" />

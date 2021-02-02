@@ -72,12 +72,6 @@ class TravelerActivity : AppCompatActivity() {
 
             }
 
-
-
-
-
-
-
         }
 
     }
