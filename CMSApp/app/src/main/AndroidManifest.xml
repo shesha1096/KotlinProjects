@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CMSApp">
-        <activity android:name=".ui.ProfileUIActivity"></activity>
+        <activity android:name=".ui.LanguagePreferenceActivity"></activity>
+        <activity android:name=".ui.ProfileUIActivity" />
         <activity android:name=".ui.PokemonActivity" />
         <activity android:name=".ui.CoroutinesActivity" />
         <activity android:name=".ui.TravelerActivity" />

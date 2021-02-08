@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CMSApp</string>
-    <string name="selectedlanguage">English</string>
-    <string name="display_message">Hello World!</string>
+    <string name="selectedlanguage">हिन्दी</string>
+    <string name="display_message">नमस्ते दुनिया</string>
 
     <string-array name="languageoptions">
         <item>English</item>

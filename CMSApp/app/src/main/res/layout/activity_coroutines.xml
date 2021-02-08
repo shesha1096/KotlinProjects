@@ -39,6 +39,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/coroutineBtn" />
+
+        <Button
+            android:id="@+id/open_profile_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{coroutineViewModel::onProfileButtonClicked}"
+            android:text="Open Profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resultTv"
+            app:layout_constraintVertical_bias="0.497" />
+
+        <Button
+            android:id="@+id/change_language_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Language"
+            android:onClick="@{coroutineViewModel::onChangeLanguageClicked}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/open_profile_btn"
+            app:layout_constraintTop_toBottomOf="@+id/resultTv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
