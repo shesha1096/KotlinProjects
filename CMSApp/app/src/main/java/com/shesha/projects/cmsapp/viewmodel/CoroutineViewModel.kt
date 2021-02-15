@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.shesha.projects.cmsapp.ui.FaqActivity
 import com.shesha.projects.cmsapp.ui.LanguagePreferenceActivity
 import com.shesha.projects.cmsapp.ui.ProfileUIActivity
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +48,14 @@ class CoroutineViewModel(private val context: Context) : ViewModel() {
     {
         context.startActivity(
             Intent(context,LanguagePreferenceActivity::class.java
+            )
+        )
+    }
+
+    fun onFaqClicked(view: View)
+    {
+        context.startActivity(
+            Intent(context,FaqActivity::class.java
             )
         )
     }

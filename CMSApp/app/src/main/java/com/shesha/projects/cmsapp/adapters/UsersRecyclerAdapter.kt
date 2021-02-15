@@ -42,5 +42,6 @@ class UsersRecyclerAdapter ( userList : List<ReqResModel.Data>, context : Contex
         var userFirstName : TextView = itemView.findViewById(R.id.user_first_name)
         var userEmail : TextView = itemView.findViewById(R.id.user_email)
         var userAvatar : ImageView = itemView.findViewById(R.id.user_avatar)
+
     }
 }
