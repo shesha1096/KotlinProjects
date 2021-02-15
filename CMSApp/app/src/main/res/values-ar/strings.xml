@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CMSApp</string>
-    <string name="selectedlanguage">English</string>
-    <string name="display_message">Hello World!</string>
+    <string name="selectedlanguage">عربى</string>
+    <string name="display_message">مرحبا بالعالم</string>
 
     <string-array name="languageoptions">
         <item>English</item>
@@ -10,4 +11,5 @@
     </string-array>
 
     <string name="file_name">"language_code")</string>
+
 </resources>

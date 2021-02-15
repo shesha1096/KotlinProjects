@@ -6,5 +6,8 @@
     <string-array name="languageoptions">
         <item>English</item>
         <item>Hindi</item>
+        <item>Arabic</item>
     </string-array>
+
+    <string name="file_name">"language_code")</string>
 </resources>
