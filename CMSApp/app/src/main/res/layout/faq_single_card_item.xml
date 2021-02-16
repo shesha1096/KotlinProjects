@@ -14,21 +14,11 @@
             android:id="@+id/upper_relative_layout"
             >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/faq"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/faq_arrow"
-                />
-
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/faq_arrow"
                 android:id="@+id/question_title"
-                android:text="How do I find a mentor?"
+                android:text="About this app"
                 android:fontFamily="sans-serif-black"
                 android:textSize="18sp"
                 android:textColor="@color/black"
@@ -38,24 +28,6 @@
                 android:maxLines="1"
                 />
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/expandable_layout"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."
-                android:layout_marginLeft="50dp"
-                android:id="@+id/faq_answer"
-                />
-
-        </RelativeLayout>
-
-
-
 
     </LinearLayout>
 

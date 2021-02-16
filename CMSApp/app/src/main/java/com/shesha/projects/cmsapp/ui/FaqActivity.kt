@@ -36,7 +36,5 @@ class FaqActivity : AppCompatActivity() {
         faqArrayList!!.add(Faq("How do I find a mentor?", "First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."))
         faqArrayList!!.add(Faq("How do I find a mentor?", "First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."))
         faqArrayList!!.add(Faq("How do I find a mentor?", "First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."))
-        faqArrayList!!.add(Faq("How do I find a mentor?", "First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."))
-        faqArrayList!!.add(Faq("How do I find a mentor?", "First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."))
     }
 }

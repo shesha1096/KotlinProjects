@@ -40,6 +40,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/expandable_layout"
@@ -50,6 +51,43 @@
                 android:text="First you’ll need a crystal ball. Then, with great concentration, gaze into the mystic realms. When you are ready, the right mentor will find you."
                 android:layout_marginLeft="50dp"
                 android:id="@+id/faq_answer"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/faq_answer"
+                android:text="Give me more information about this"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/expand_text_view"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_toRightOf="@id/expand_text_view"
+                android:layout_below="@id/faq_answer"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="80dp"
+                android:id="@+id/expand_image_view"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/second_expandable_layout"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You will have to visit the website and request for mentorship from a field that you require help in."
+                android:layout_marginLeft="50dp"
+                android:id="@+id/second_faq_answer"
                 />
 
         </RelativeLayout>
