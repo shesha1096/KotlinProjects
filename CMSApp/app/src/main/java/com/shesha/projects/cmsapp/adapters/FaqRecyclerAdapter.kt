@@ -1,14 +1,12 @@
 package com.shesha.projects.cmsapp.adapters
 
-import android.app.LauncherActivity.ListItem
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.shesha.projects.cmsapp.R
 import com.shesha.projects.cmsapp.model.Faq
@@ -86,6 +84,31 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
             }
 
 
+            holder.questionView.setOnLongClickListener(object : View.OnLongClickListener {
+                override fun onLongClick(v: View?): Boolean {
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("Delete Item")
+                    builder.setMessage("Are you sure you want to delete this item?")
+                    //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                    builder.setPositiveButton("Yes") { dialog, which ->
+                        faqArrayList.remove(faqArrayList.get(position))
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position,faqArrayList.size)
+                    }
+
+                    builder.setNegativeButton("No") { dialog, which ->
+                        dialog.dismiss()
+                    }
+
+                    builder.show()
+
+                    return true
+                }
+            })
+
+
+
 
             holder.expandedQuestionView.setOnClickListener{
                 if (holder.secondExpandableRelativeLayout.visibility == View.VISIBLE)
@@ -134,6 +157,29 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
                 notifyDataSetChanged()
 
             }
+
+            holder.questionView.setOnLongClickListener(object : View.OnLongClickListener {
+                override fun onLongClick(v: View?): Boolean {
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("Delete Item")
+                    builder.setMessage("Are you sure you want to delete this item?")
+                    //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                    builder.setPositiveButton("Yes") { dialog, which ->
+                        faqArrayList.remove(faqArrayList.get(position))
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position,faqArrayList.size)
+                    }
+
+                    builder.setNegativeButton("No") { dialog, which ->
+                        dialog.dismiss()
+                    }
+
+                    builder.show()
+
+                    return true
+                }
+            })
 
             holder.expandedQuestionView.setOnClickListener{
                 if (holder.secondExpandableRelativeLayout.visibility == View.VISIBLE)
@@ -203,13 +249,60 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
                 notifyDataSetChanged()
 
             }
+
+            holder.questionView.setOnLongClickListener(object : View.OnLongClickListener {
+                override fun onLongClick(v: View?): Boolean {
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("Delete Item")
+                    builder.setMessage("Are you sure you want to delete this item?")
+                    //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                    builder.setPositiveButton("Yes") { dialog, which ->
+                        faqArrayList.remove(faqArrayList.get(position))
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position,faqArrayList.size)
+                    }
+
+                    builder.setNegativeButton("No") { dialog, which ->
+                        dialog.dismiss()
+                    }
+
+                    builder.show()
+
+                    return true
+                }
+            })
         }
         else
         {
+            var holder = holder as SingleChildViewHolder
             if (isExpanded)
             {
                 previousExpandedPosition = position
             }
+
+            holder.relativeLayout.setOnLongClickListener(object : View.OnLongClickListener {
+                override fun onLongClick(v: View?): Boolean {
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("Delete Item")
+                    builder.setMessage("Are you sure you want to delete this item?")
+                    //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+                    builder.setPositiveButton("Yes") { dialog, which ->
+                        faqArrayList.remove(faqArrayList.get(position))
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position,faqArrayList.size)
+                    }
+
+                    builder.setNegativeButton("No") { dialog, which ->
+                        dialog.dismiss()
+                    }
+
+                    builder.show()
+
+                    return true
+                }
+            })
 
 
         }
@@ -247,6 +340,8 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
         val expandableRelativeLayout: RelativeLayout
         val imageView : ImageView
 
+
+
         init {
             questionView = itemView.findViewById(R.id.question_title)
             answerView = itemView.findViewById(R.id.faq_answer)
@@ -254,6 +349,9 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
             imageView = itemView.findViewById(R.id.faq_arrow)
 
         }
+
+
+
 
 
     }
@@ -312,7 +410,10 @@ class FaqRecyclerAdapter(private val context: Context, faqArrayList: ArrayList<F
 
     class SingleChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-
+        val relativeLayout : RelativeLayout
+        init {
+            relativeLayout = itemView.findViewById(R.id.upper_relative_layout)
+        }
     }
 
 
