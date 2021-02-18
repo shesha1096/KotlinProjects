@@ -6,9 +6,7 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.shesha.projects.cmsapp.ui.FaqActivity
-import com.shesha.projects.cmsapp.ui.LanguagePreferenceActivity
-import com.shesha.projects.cmsapp.ui.ProfileUIActivity
+import com.shesha.projects.cmsapp.ui.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -56,6 +54,22 @@ class CoroutineViewModel(private val context: Context) : ViewModel() {
     {
         context.startActivity(
             Intent(context,FaqActivity::class.java
+            )
+        )
+    }
+
+    fun onAccelerometerClicked(view : View)
+    {
+        context.startActivity(
+            Intent(context,AccelerometerActivity::class.java
+            )
+        )
+    }
+
+    fun onMapsClicked(view: View)
+    {
+        context.startActivity(
+            Intent(context,MarkerActivity::class.java
             )
         )
     }

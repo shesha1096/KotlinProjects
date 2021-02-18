@@ -20,13 +20,14 @@
             android:id="@+id/coroutineBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Click Me!"
             android:onClick="@{coroutineViewModel::onClickMeClicked}"
+            android:text="Click Me!"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.947"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.142" />
+            app:layout_constraintVertical_bias="0.144" />
 
         <TextView
             android:id="@+id/resultTv"
@@ -76,6 +77,32 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.369"
             app:srcCompat="@drawable/ic_baseline_question_answer_24" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accelerometer"
+            android:onClick="@{coroutineViewModel::onAccelerometerClicked}"
+            app:layout_constraintBottom_toTopOf="@+id/coroutineBtn"
+            app:layout_constraintEnd_toStartOf="@+id/faq_btn"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.408" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Google Maps"
+            android:onClick="@{coroutineViewModel::onMapsClicked}"
+            app:layout_constraintBottom_toTopOf="@+id/resultTv"
+            app:layout_constraintEnd_toStartOf="@+id/coroutineBtn"
+            app:layout_constraintHorizontal_bias="0.144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            app:layout_constraintVertical_bias="0.094" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

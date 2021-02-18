@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CMSApp">
-        <activity android:name=".ui.FaqActivity"></activity>
+        <activity android:name=".ui.MarkerActivity"></activity>
+        <activity android:name=".ui.AccelerometerActivity" />
+        <activity android:name=".ui.FaqActivity" />
         <activity android:name=".ui.LanguagePreferenceActivity" />
         <activity android:name=".ui.ProfileUIActivity" />
         <activity android:name=".ui.PokemonActivity" />
@@ -28,6 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${mapsApiKey}" />
     </application>
 
 </manifest>
