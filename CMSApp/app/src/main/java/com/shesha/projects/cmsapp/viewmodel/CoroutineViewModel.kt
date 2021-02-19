@@ -74,4 +74,12 @@ class CoroutineViewModel(private val context: Context) : ViewModel() {
         )
     }
 
+    fun onCustomViewClicked(view: View)
+    {
+        context.startActivity(
+            Intent(context,CustomViewActivity::class.java
+            )
+        )
+    }
+
 }
